@@ -1,0 +1,23 @@
+# 把本插件挂进 DSH 的 profile 配置。
+#
+# 用法：把下面整段追加到 profiles/<你的profile>/cordis.patch.yml 末尾。
+# 改完不需要重启也能热重载，但插件模块本身要重启 DSH 才会加载。
+- insert:
+    - id: thinking-guard
+      name: 'dsh-thinking-guard'
+      config:
+        enabled: true
+        # 纯思考、零 text / 零 tool-call 持续多久算「空转」（毫秒）
+        thinkingOnlyMs: 45000
+        # 同一短语连续重复多少次算「复读」
+        repeatThreshold: 3
+        # 熔断后往会话里插一条说明，告诉你为什么被打断
+        notify: true
+        # 熔断后自动注入「继续」指令，让模型接着干活
+        autoContinue: true
+        # 打开后会在 stderr 打印插件自己的调试日志
+        verbose: false
+        # 下面两档默认关闭：实测误报率高，代价是极端空转抓不到。
+        # 想更严格就把这两行删掉，恢复代码默认值（80000 字符 / 5 次）。
+        maxThinkingChars: 1000000000
+        sparseMinCount: 50
