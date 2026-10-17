@@ -8,7 +8,7 @@
       config:
         enabled: true
         # 纯思考、零 text / 零 tool-call 持续多久算「空转」（毫秒）
-        thinkingOnlyMs: 45000
+        thinkingOnlyMs: 90000
         # 同一短语连续重复多少次算「复读」
         repeatThreshold: 3
         # 熔断后往会话里插一条说明，告诉你为什么被打断
