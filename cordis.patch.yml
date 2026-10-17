@@ -7,8 +7,10 @@
       name: 'dsh-thinking-guard'
       config:
         enabled: true
-        # 纯思考、零 text / 零 tool-call 持续多久算「空转」（毫秒）
-        thinkingOnlyMs: 90000
+        # 纯思考、零 text / 零 tool-call 持续多久算「空转」（毫秒）。
+        # 默认关闭（1e9 永不可达）：flash 类模型深推理时静默期很长，误伤率高。
+        # 想启用改成 90000 或更大。
+        thinkingOnlyMs: 1000000000
         # 同一短语连续重复多少次算「复读」
         repeatThreshold: 3
         # 熔断后往会话里插一条说明，告诉你为什么被打断
